@@ -12,6 +12,7 @@
   --primary-color-light: #dad9ea;
   --toggle-color: rgb(188, 188, 188);
   --text-color: #707070;
+  --hover-color: #ffffff;
 
   /* ====== Transition ====== */
   --tran-02: all 0.2s ease;
@@ -33,6 +34,8 @@ body.dark {
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;
   --text-color: #ccc;
+  --hover-color: #eee8e8;
+
 }
 .sidebar {
   position: fixed;
@@ -85,17 +88,17 @@ header svg:last-child path {
   padding: 1rem;
 }
 .sidebar input {
-  position: relative;
+  /* position: relative; */
   outline: none;
   border: none;
-  width: 12rem;
+  width: 100%;
   background-color: transparent;
   transition: var(--tran-05);
 }
 .sidebar.close input {
   position: absolute;
-  opacity: 0;
-  transform: translateX(-150%);
+  display: none;
+  transform: translateX(150%);
   transition: var(--tran-05);
 }
 .sidebar ul {
@@ -118,17 +121,24 @@ header svg:last-child path {
 }
 .sidebar.close ul li a svg {
   position: absolute;
+  z-index: 2;
   transition: var(--tran-05);
 }
-.sidebar.close ul li span.text {
-  opacity: 0;
-  transition: var(--tran-05);
+.sidebar ul li a span.nav_text {
+  position: relative;
+  transform: translateX(0%);
+  transition: var(--tran-03);
+}
+.sidebar.close ul li a span.nav_text {
+  position: relative;
+  transform: translateX(-200%);
+  transition: var(--tran-03);
 }
 .sidebar li a:hover,
 .sidebar li a:hover svg path {
   background-color: var(--primary-color);
-  color: var(--primary-color-light);
-  stroke: var(--primary-color-light);
+  color: var(--hover-color);
+  stroke: var(--hover-color);
 }
 .sidebar .menu_bar {
   height: calc(100% - 70px);
@@ -226,15 +236,15 @@ main {
   position: absolute;
   width: calc(100% - 25rem);
   left: 25rem;
-  transition: var(--tran-04);
+  transition: var(--tran-05);
 }
 main h1 {
   color: var(--text-color);
 }
 .sidebar.close ~ main {
-  width: calc(100%  - 7.5rem);
+  width: calc(100% - 7.5rem);
   left: 7.5rem;
-  transition: var(--tran-04);
+  transition: var(--tran-05);
 }
 /* .sidebar.close ~ main h1 {
   color
